@@ -2,7 +2,7 @@ describe("TodosCollection", function () {
 	var todosCollection;
 
 	beforeEach( function (){
-		todosCollection = new TodosCollection();
+		todosCollection = new App.Collection.TodosCollection();
 	});
 
 	describe('todosCollection fetch', function () {

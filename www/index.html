@@ -2,14 +2,40 @@
 <html>
 <head>
     <title>My to do list</title>
-    <script data-main="js/main" src="js/libs/require/require.js"></script>
 </head>
 
 <body>
 
+	<!--Includes-->
+	<script type="text/javascript" src="js/libs/jquery/jquery-min.js"></script>
+	<script type="text/javascript" src="js/libs/underscore/underscore-min.js"></script>
+	<script type="text/javascript" src="js/libs/backbone/backbone-min.js"></script>
+
+	<script type="text/javascript" src="js/AppModule.js"></script>
+	<script type="text/javascript" src="js/models/todoModel.js"></script>
+	<script type="text/javascript" src="js/collections/todosCollection.js"></script>
+
+
     <div id="container">
 
     </div>
+
+    <!--Templates-->
+
+    <script type = "text/template", id = "todoItem-template">
+    	<fieldset>
+	    	<li>
+	    	<label><%= title %></label>
+	    	<label><%= completed %></label>
+	    	</li>
+    	</fieldset>
+    </script>
+
+    <script type = "text/template", id = "todoCollection-template">
+    	<fieldset>
+    		<ul></ul>
+    	</fieldset>
+    </script>
 
 </body>
 </html>

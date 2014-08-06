@@ -1,7 +1,7 @@
-var TodoModel = Backbone.Model.extend({
+App.Model.TodoModel = Backbone.Model.extend({
 	defaults: {
 		"id": '',
 		"title" : '',
 		"completed" : false
-	} 	
+	}
 });

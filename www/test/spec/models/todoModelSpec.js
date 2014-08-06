@@ -2,15 +2,7 @@ describe("TodoModel", function() {
 	var todoModel;
 
 	beforeEach(function(){
-		todoModel = new TodoModel({"id": 21, "title": "A text.", "completed": false});
-	});
-
-	it("can be instantiated", function() {
-		expect(todoModel).not.toBeNull();
-	});
-
-	it("has content", function(){
-		expect(todoModel.get('attributes')).not.toBeNull();
+		todoModel = new App.Model.TodoModel({"id": 21, "title": "A text.", "completed": false});
 	});
 
 	it("has the correct content", function(){
@@ -19,4 +11,3 @@ describe("TodoModel", function() {
 		expect(todoModel.get('completed')).toBe(false);
 	});
 });
- 

@@ -1,3 +1,4 @@
-App = {};
-App.Model = {};
-App.Collection = {};
+App = {
+	Model: {},
+	Collection: {}
+};
