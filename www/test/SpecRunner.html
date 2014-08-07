@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML">
 <html>
 <head>
   <title>ToDo App's Test Runner</title>
@@ -10,19 +9,22 @@
   <script type="text/javascript" src="lib/jasmine-2.0.0/jasmine-html.js"></script>
   <script type="text/javascript" src="lib/jasmine-2.0.0/boot.js"></script>
 
-
   <!-- app's source code files go here -->
 	<script type="text/javascript" src="../js/libs/jquery/jquery-min.js"></script>
-	<script type="text/javascript" src="../js/libs/underscore/underscore-min.js"></script>
-	<script type="text/javascript" src="../js/libs/backbone/backbone-min.js"></script>
+  <script type="text/javascript" src="http://underscorejs.org/underscore.js"></script>
+  <script type="text/javascript" src="http://backbonejs.org/backbone.js"></script>
 
   <script type="text/javascript" src="../js/AppModule.js"></script>
   <script type="text/javascript" src="../js/models/todoModel.js"></script>
   <script type="text/javascript" src="../js/collections/todosCollection.js"></script>
+  <script type="text/javascript" src="../js/views/todosCollectionView.js"></script>
+  <script type="text/javascript" src="../js/views/todoView.js"></script>
 
 	<!-- test spec files go here -->
   <script type="text/javascript" src="spec/models/todoModelSpec.js"></script>
   <script type="text/javascript" src="spec/collections/todosCollectionSpec.js"></script>
+  <script type="text/javascript" src="spec/views/todosCollectionViewSpec.js"></script>
+  <script type="text/javascript" src="spec/views/todoViewSpec.js"></script>
 
   <script type="text/javascript">
     (function() {

@@ -1,25 +1,25 @@
-App.View.TodosCollectionView = Backbone.View.extend({
-	template: _.template($('#todosCollection-template').html()),
+App.Views.TodosCollectionView = Backbone.View.extend({
 	events: {
 		'click #add-button': 'addTodo'
 	},
 	initialize: function() {
-		this.collection.on('all', this.render, this);
+		this.collection.on('add', this.render, this);
+	},
+	getTemplate: function () {
+		return _.template($('#todosCollection-template').html());
 	},
 	render: function() {
-		this.$el.html(this.template());
+		this.$el.html(this.getTemplate()());
 		this.collection.forEach( function (todo) {
-				var todoView = new App.View.TodoView({model: todo});
+				var todoView = new App.Views.TodoView({model: todo});
 				this.$('.todos').append(todoView.$el);
 				todoView.render();
 		}, this);
 		return this;
 	},
 	addTodo: function (){
-		var title = $('#title-input').val();
-		var nextId = this.collection.nextId();
-		var todoModel = new App.Model.TodoModel({ 'id': nextId, 'title': title, 'completed': false});
+		var title = this.$('#title-input').val();
+		var todoModel = new App.Models.TodoModel({ 'title': title, 'completed': false});
 		this.collection.add(todoModel);
 	}
-
 });

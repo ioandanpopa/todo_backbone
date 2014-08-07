@@ -1,19 +1,19 @@
-describe("TodosCollection", function () {
+describe("App.Collections.TodosCollection", function () {
 	var todosCollection;
 
 	beforeEach( function (){
-		todosCollection = new App.Collection.TodosCollection();
+		todosCollection = new App.Collections.TodosCollection();
 	});
 
-	describe('TodosCollection fetch', function () {
-		beforeEach(function (done) {
+	describe('fetch', function () {
+		beforeEach( function (done) {
 			todosCollection.fetch({ url: 'spec/fixtures/todo_list.json' })
-				.done(function () {
+				.done( function () {
 					done();
 				});
 		});
 
-		it("has correct size", function (done) {
+		it('has correct size', function (done) {
 			expect(todosCollection.length).toBe(2);
 
 			done();

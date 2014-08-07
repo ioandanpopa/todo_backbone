@@ -1,6 +1,5 @@
-App.Model.TodoModel = Backbone.Model.extend({
+App.Models.TodoModel = Backbone.Model.extend({
 	defaults: {
-		"id": '',
 		"title" : '',
 		"completed" : false
 	}

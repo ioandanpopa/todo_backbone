@@ -1,5 +1,5 @@
 App = {
-	Model: {},
-	Collection: {},
-	View: {}
+	Models: {},
+	Collections: {},
+	Views: {}
 };

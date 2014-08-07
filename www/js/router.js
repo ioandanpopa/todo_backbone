@@ -2,11 +2,9 @@ App.TodoRouter = Backbone.Router.extend({
     routes: {
         '*actions': 'defaultAction'
     },
-    defaultAction: function () {
-        var todoCollection = new App.Collection.TodosCollection();
 
-        todoCollection.fetch().done( function () {
-            new App.View.TodosCollectionView({collection: todoCollection, el: $('.container')}).render();
-        });
+    defaultAction: function () {
+        var todoCollection = new App.Collections.TodosCollection();
+       	new App.Views.TodosCollectionView({ collection: todoCollection, el: $('.container') }).render();
     }
 });

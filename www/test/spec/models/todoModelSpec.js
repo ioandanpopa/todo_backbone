@@ -1,8 +1,8 @@
-describe("TodoModel", function() {
+describe("App.Models.TodoModel", function() {
 	var todoModel;
 
 	beforeEach(function(){
-		todoModel = new App.Model.TodoModel({"id": 21, "title": "A text.", "completed": false});
+		todoModel = new App.Models.TodoModel({"id": 21, "title": "A text.", "completed": false});
 	});
 
 	it("has the correct content", function(){
