@@ -6,35 +6,41 @@
 
 <body>
 
+     <!---HTML-->
+    <div class="container"></div>
+
+    <!--Templates-->
+    <script type = "text/template" id = "todo-template">
+        <fieldset>
+            <label><%= title %></label>
+            <label><%= completed %></label>
+        </fieldset>
+    </script>
+
+    <script type = "text/template" id = "todosCollection-template">
+        <h1>My todo list</h1>   
+        <hr />
+        <div class = "todos">
+        </div>
+    </script>
+
 	<!--Includes-->
 	<script type="text/javascript" src="js/libs/jquery/jquery-min.js"></script>
-	<script type="text/javascript" src="js/libs/underscore/underscore-min.js"></script>
-	<script type="text/javascript" src="js/libs/backbone/backbone-min.js"></script>
+	<script type="text/javascript" src="http://underscorejs.org/underscore.js"></script>
+	<script type="text/javascript" src="http://backbonejs.org/backbone.js"></script>
 
 	<script type="text/javascript" src="js/AppModule.js"></script>
 	<script type="text/javascript" src="js/models/todoModel.js"></script>
 	<script type="text/javascript" src="js/collections/todosCollection.js"></script>
+	<script type="text/javascript" src="js/router.js"></script>
+    <script type="text/javascript" src="js/views/todoView.js"></script>
+    <script type="text/javascript" src="js/views/todosCollectionView.js"></script>
 
+    <script type = "text/javascript">
+    	
+    var todoRouter = new App.TodoRouter();
+    Backbone.history.start();
 
-    <div id="container">
-
-    </div>
-
-    <!--Templates-->
-
-    <script type = "text/template", id = "todoItem-template">
-    	<fieldset>
-	    	<li>
-	    	<label><%= title %></label>
-	    	<label><%= completed %></label>
-	    	</li>
-    	</fieldset>
-    </script>
-
-    <script type = "text/template", id = "todoCollection-template">
-    	<fieldset>
-    		<ul></ul>
-    	</fieldset>
     </script>
 
 </body>

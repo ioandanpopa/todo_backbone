@@ -5,7 +5,7 @@ describe("TodosCollection", function () {
 		todosCollection = new App.Collection.TodosCollection();
 	});
 
-	describe('todosCollection fetch', function () {
+	describe('TodosCollection fetch', function () {
 		beforeEach(function (done) {
 			todosCollection.fetch({ url: 'spec/fixtures/todo_list.json' })
 				.done(function () {

@@ -1,12 +1,12 @@
 [  
   {  
      "id":1,
-     "name": "Buy beer!",
+     "title": "Buy beer!",
      "completed":true
   },
   {  
      "id":2,
-     "name": "Drink beer!",
+     "title": "Drink beer!",
      "completed":false
   }
 ]
