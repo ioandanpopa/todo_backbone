@@ -10,20 +10,25 @@
     <div class="container"></div>
 
     <!--Templates-->
-    <script type = "text/template" id = "todo-template">
-        <fieldset>
-            <label id="title-label"><%= title %></label>
-            <label id="completed-label"><%= completed %></label>
-        </fieldset>
-    </script>
 
-    <script type = "text/template" id = "todosCollection-template">
+     <script type= "text/template" id= "newTodo-template">
         <h1>My todo list</h1>   
         <hr />
         <fieldset>
         <input type="text" id="title-input">
         <input type="button" id="add-button" value="Add">
         </fieldset>
+        <div class="todosCollection"></div>
+    </script>
+
+    <script type= "text/template" id= "todo-template">
+        <fieldset>
+            <label id="title-label"><%= title %></label>
+            <label id="completed-label"><%= completed %></label>
+        </fieldset>
+    </script>
+
+    <script type="text/template" id="todosCollection-template">
         <div class = "todos">
         </div>
     </script>
@@ -39,6 +44,7 @@
 	<script type="text/javascript" src="js/router.js"></script>
     <script type="text/javascript" src="js/views/todoView.js"></script>
     <script type="text/javascript" src="js/views/todosCollectionView.js"></script>
+    <script type="text/javascript" src="js/views/newTodoView.js"></script>
 
     <script type = "text/javascript">
     	
