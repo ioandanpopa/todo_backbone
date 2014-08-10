@@ -1,8 +1,13 @@
 App.Views.TodoView = Backbone.View.extend({
 	events: {
 		'click .delete-button': 'destroy',
+		'click .check-button': 'changeState',		
 		'mouseenter .todoView': 'showDeleteButton',
 		'mouseleave .todoView': 'hideDeleteButton',
+	},
+
+	initialize: function () {
+		this.model.on( "change:completed", this.render, this);
 	},
 
 	getTemplate: function () {
@@ -11,6 +16,7 @@ App.Views.TodoView = Backbone.View.extend({
 
 	render: function () {
 		this.$el.html(this.getTemplate()(this.model.attributes));
+		this.changeTextDecoration();
 		return this;
 	},
 
@@ -25,5 +31,16 @@ App.Views.TodoView = Backbone.View.extend({
 	destroy: function () {
 		this.model.destroy();
 		this.remove();	
+	},
+
+	changeState: function () {
+		this.model.set('completed', !this.model.get('completed'));
+		this.changeTextDecoration();
+	},
+
+	changeTextDecoration: function () {
+		var checked = this.model.get('completed');
+		var textDecoration = checked ? 'line-through' : 'none';
+		this.$el.find('.title-label').css('text-decoration', textDecoration);
 	}
 });

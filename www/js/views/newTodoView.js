@@ -1,6 +1,7 @@
 App.Views.NewTodoView = Backbone.View.extend({
 	events: {
-		'click #add-button': 'addTodo'
+		'click #add-button': 'addTodo',
+		'click #checkAll-button': 'checkAllTodos'
 	},
 
 	getTemplate: function () {
@@ -15,14 +16,18 @@ App.Views.NewTodoView = Backbone.View.extend({
 	addTodo: function (){
 		var todoModel = new App.Models.TodoModel({ title: this.$('#title-input').val() });
 
-		if(todoModel.isValid())
-		{
+		if (todoModel.isValid()) {
 			this.collection.add(todoModel);
 			this.$('#title-input').val('');
 		}
-		else
-		{
+		else {
 			todoModel.destroy();
 		}
+	},
+
+	checkAllTodos: function () {
+		this.collection.each( function (todo) {
+			todo.set('completed', true);
+		}, this);
 	}
 });

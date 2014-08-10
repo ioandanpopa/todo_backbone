@@ -16,12 +16,12 @@ describe('App.Views.NotificationView', function () {
 		});
 		
 		it('can store the deleted todo', function () {
-			expect(notificationView.deletedTodo).not.toBeNull();
+			expect(notificationView.getAttr('deletedTodo').get('title')).toEqual('Test.');
 		});
 
 		it('can restore the deleted todo', function () {
 			notificationView.restoreDeletedTodo();
-			expect(todosCollection.length).toEqual(1);
+			expect(todosCollection.at(0).get('title')).toEqual('Test.');
 		});
 	});
 });

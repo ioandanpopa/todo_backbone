@@ -19,4 +19,25 @@ describe("App.Collections.TodosCollection", function () {
 			done();
 		});
 	});
+
+	describe('Number of completed todos', function () {
+		var todoModel;
+		
+		beforeEach( function () {
+			todoModel = new App.Models.TodoModel({ title: 'Title2'});
+			todosCollection.add(new App.Models.TodoModel({ title: 'Title1', completed: true }));
+			todosCollection.add(todoModel);
+		});
+
+		it('can be calculated correctly', function () {			
+			todosCollection.updateCompletedTodosNr();	
+			expect(todosCollection.getAttr('completedTodosNr')).toEqual(1);
+		});
+
+		it('can be updated by the change event of the model', function () {
+			todoModel.set('completed', true);
+			expect(todosCollection.getAttr('completedTodosNr')).toEqual(2);
+		});
+
+	});
 });

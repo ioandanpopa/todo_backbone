@@ -20,6 +20,7 @@
     
     <script type= "text/template" id= "newTodo-template">
         <fieldset>
+            <input type="button" id="checkAll-button" value="V">
             <input type="text" id="title-input">
             <input type="button" id="add-button" value="Add">
         </fieldset>
@@ -28,7 +29,8 @@
     <script type= "text/template" id= "todo-template">
         <div class="todoView">
             <fieldset>
-                <label id="title-label"><%= title %>
+                <input type="checkbox" class="check-button" <% print( completed ?  'checked' : '') %> >
+                <label class="title-label" style="text-decoration:none;"><%= title %></label>
                 <input type="button" style="visibility:hidden" class="delete-button" value="x">
             </fieldset>
         </div>
