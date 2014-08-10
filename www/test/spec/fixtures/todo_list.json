@@ -1,11 +1,9 @@
 [  
   {  
-     "id":1,
      "title": "Buy beer!",
      "completed":true
   },
   {  
-     "id":2,
      "title": "Drink beer!",
      "completed":false
   }

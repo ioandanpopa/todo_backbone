@@ -7,25 +7,31 @@
 <body>
 
      <!---HTML-->
-    <div class="container"></div>
+    <div class="container" style="width:35%"></div>
 
     <!--Templates-->
-
-     <script type= "text/template" id= "newTodo-template">
+    <script type="text/template" id="page-template">
         <h1>My todo list</h1>   
         <hr />
+        <div class="notification-area"></div>
+        <div class="newTodo-area"></div>
+        <div class="todosCollection-area"></div>
+    </script>
+    
+    <script type= "text/template" id= "newTodo-template">
         <fieldset>
-        <input type="text" id="title-input">
-        <input type="button" id="add-button" value="Add">
+            <input type="text" id="title-input">
+            <input type="button" id="add-button" value="Add">
         </fieldset>
-        <div class="todosCollection"></div>
     </script>
 
     <script type= "text/template" id= "todo-template">
-        <fieldset>
-            <label id="title-label"><%= title %></label>
-            <label id="completed-label"><%= completed %></label>
-        </fieldset>
+        <div class="todoView">
+            <fieldset>
+                <label id="title-label"><%= title %>
+                <input type="button" style="visibility:hidden" class="delete-button" value="x">
+            </fieldset>
+        </div>
     </script>
 
     <script type="text/template" id="todosCollection-template">
@@ -33,22 +39,37 @@
         </div>
     </script>
 
+    <script type="text/template" id="notification-template">
+        <fieldset>
+            <label id="notification-text"><%= title %>
+            <input type="button" class="undo-button" value="Undo">
+        </fieldset>
+    </script>
+
 	<!--Includes-->
 	<script type="text/javascript" src="js/libs/jquery/jquery-min.js"></script>
 	<script type="text/javascript" src="http://underscorejs.org/underscore.js"></script>
 	<script type="text/javascript" src="http://backbonejs.org/backbone.js"></script>
 
-	<script type="text/javascript" src="js/AppModule.js"></script>
+	<script type="text/javascript" src="js/appModule.js"></script>
+    <script type="text/javascript" src="js/router.js"></script>
+
 	<script type="text/javascript" src="js/models/todoModel.js"></script>
-	<script type="text/javascript" src="js/collections/todosCollection.js"></script>
-	<script type="text/javascript" src="js/router.js"></script>
+    <script type="text/javascript" src="js/models/notificationModel.js"></script>
+	
+    <script type="text/javascript" src="js/collections/todosCollection.js"></script>
+
     <script type="text/javascript" src="js/views/todoView.js"></script>
     <script type="text/javascript" src="js/views/todosCollectionView.js"></script>
     <script type="text/javascript" src="js/views/newTodoView.js"></script>
+    <script type="text/javascript" src="js/views/pageView.js"></script>
+    <script type="text/javascript" src="js/views/notificationView.js"></script>
 
     <script type = "text/javascript">
-    	
+    
     var todoRouter = new App.TodoRouter();
+    //var collection = new TodoCollection();
+    // App.todoService = new TodoService(collection);
     Backbone.history.start();
 
     </script>

@@ -13,9 +13,16 @@ App.Views.NewTodoView = Backbone.View.extend({
 	},
 
 	addTodo: function (){
-		var title = this.$('#title-input').val();
-		var todoModel = new App.Models.TodoModel({ 'title': title, 'completed': false});
-		this.collection.add(todoModel);
-		this.$('#title-input').val('');
+		var todoModel = new App.Models.TodoModel({ title: this.$('#title-input').val() });
+
+		if(todoModel.isValid())
+		{
+			this.collection.add(todoModel);
+			this.$('#title-input').val('');
+		}
+		else
+		{
+			todoModel.destroy();
+		}
 	}
 });
