@@ -15,7 +15,7 @@ describe('App.Views.TodoView', function () {
 		expect(todosCollection.length).toBe(1);
 	});
 
-	describe('Checked/Uncheck', function () {
+	/*describe('Checked/Uncheck', function () {
 		beforeEach( function () {			
 			todoView.changeState();
 		});
@@ -28,5 +28,5 @@ describe('App.Views.TodoView', function () {
 			todoView.changeState();
 			expect(todoView.model.get('completed')).toEqual(false);
 		});
-	});
+	});*/
 });

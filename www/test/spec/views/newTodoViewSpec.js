@@ -1,18 +1,20 @@
 describe('App.Views.NewTodoView', function () {
 	var newTodoView;
 	var todosCollection;
-	var fixture;
-	var subject;
 
 	beforeEach( function (){
 		todosCollection = new App.Collections.TodosCollection();
-		fixture = $('<input type="text" id="title-input"/>');
 		newTodoView = new App.Views.NewTodoView({ collection: todosCollection });
-		newTodoView.$el.append(fixture);
 	});
 
 	describe('when adding a new todo', function () {
+		var fixture;
+		var subject;
+
 		beforeEach(function () {
+			fixture = $('<input type="text" id="title-input"/>');
+			newTodoView.$el.append(fixture);
+
 			subject = function () {
 				newTodoView.addTodo();
 			};
@@ -32,15 +34,16 @@ describe('App.Views.NewTodoView', function () {
 	});
 
 	describe('when pressing the complete all button', function () {
+		var todoModel;
+
 		beforeEach( function () {
-			todosCollection.remove();
-			todosCollection.add(new App.Models.TodoModel({ title: 'Title1'}));
-			todosCollection.add(new App.Models.TodoModel({ title: 'Title2'}));
+			todoModel = new App.Models.TodoModel({ title: 'Title1'})
+			todosCollection.add(todoModel);
 		});
 
 		it('can complete all todos', function () {
 			newTodoView.checkAllTodos();
-			expect(todosCollection.getAttr('completedTodosNr')).toEqual(todosCollection.length);
+			expect(todoModel.get('completed')).toBe(true);
 		});
 	});
 });

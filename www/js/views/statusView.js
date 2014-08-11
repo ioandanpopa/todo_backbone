@@ -2,7 +2,7 @@ App.Views.StatusView = Backbone.View.extend({
 	model: App.Models.StatusModel,
 
 	initialize: function () {
-		this.collection.on( 'add remove change:completed', this.updateRemainingNr, this);
+		this.collection.on( 'add remove change:completed', this.refreshStatistics, this);
 	},
 
 	getTemplate: function () {
@@ -14,14 +14,25 @@ App.Views.StatusView = Backbone.View.extend({
 		return this;
 	},
 
-	updateRemainingNr: function () 
-	{
+	refreshStatistics: function () {
 		this.updateModelValues();
 		this.render();
 	},
 
-	updateModelValues: function () {
-		this.model.set('remainingTodosNr', this.collection.getAttr('remainingTodosNr'));
-		this.model.set('completedTodosNr', this.collection.getAttr('completedTodosNr'));
+	updateModelValues: function () {		
+		var completedTodosNr = 0;
+		var remainingTodosNr = 0;
+
+		_.each(this.collection.models, _.bind( function(todoModel) {
+			if(todoModel.get('completed')){
+				completedTodosNr++;
+			}
+			else{
+				remainingTodosNr++;
+			}
+		}, this));
+
+		this.model.set('remainingTodosNr', remainingTodosNr);
+		this.model.set('completedTodosNr', completedTodosNr);
 	}
 });
