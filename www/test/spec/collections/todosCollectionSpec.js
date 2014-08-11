@@ -19,4 +19,25 @@ describe("App.Collections.TodosCollection", function () {
 			done();
 		});
 	});
+
+	describe('filter', function () {
+		beforeEach( function () {
+			todosCollection.add(new App.Models.TodoModel({ title: 'Get something' }));
+			todosCollection.add(new App.Models.TodoModel({ title: 'Do something' , completed: true }));
+			todosCollection.add(new App.Models.TodoModel({ title: 'Try something' }));
+		});
+
+		it('can return all todos', function () {			
+			expect(todosCollection.getAll().length).toEqual(3);
+		});
+
+		it('can return all active todos', function () {			
+			expect(todosCollection.getActive().length).toEqual(2);
+		});
+
+		it('can return all completed todos', function () {			
+			expect(todosCollection.getCompleted().length).toEqual(1);
+		});
+
+	});
 });

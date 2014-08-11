@@ -1,6 +1,6 @@
 App.Views.TodosCollectionView = Backbone.View.extend({
 	initialize: function() {
-		this.collection.on('add', this.renderNewElement, this);
+		this.listenTo(this.collection, 'add change:completed', this.render, this);
 	},
 
 	getTemplate: function () {
@@ -9,6 +9,7 @@ App.Views.TodosCollectionView = Backbone.View.extend({
 
 	render: function () {
 		this.$el.html(this.getTemplate()());
+		this.renderAllElements();
 		return this;
 	},
 
@@ -16,5 +17,15 @@ App.Views.TodosCollectionView = Backbone.View.extend({
 		var todoView = new App.Views.TodoView({model: todo});
 		this.$('.todos').append(todoView.$el);
 		todoView.render();
+	},
+
+	renderAllElements: function () {
+		this.getTodos().each( function (todo) {
+			this.renderNewElement(todo);
+		}, this);
+	},
+
+	getTodos: function () {
+		return this.collection.getAll();
 	}
 });

@@ -4,16 +4,8 @@ App.Views.NotificationView = Backbone.View.extend({
 	},
 
 	initialize: function () {
-		this.collection.on('remove', this.showHandler, this);
+		this.listenTo(this.collection, 'remove', this.showHandler, this);
 		this._attributes = {};
-	},
-
-	getAttr: function (attr_name) {
-		return this._attributes[attr_name];
-	},
-
-	setAttr: function (attr_name, value) {
-		this._attributes[attr_name] = value;
 	},
 
 	getTemplate: function () {
@@ -31,21 +23,21 @@ App.Views.NotificationView = Backbone.View.extend({
 	},
 
 	showView: function () {
-		if(this.$el.css('display') == 'none'){
-			this.$el.fadeIn(1000);
-			this.$el.fadeOut(4000);
+		if($(this.el).parent().css('display') == 'none'){
+			$(this.el).parent().fadeIn(1000);
+			$(this.el).parent().fadeOut(4000);
 		}
 		else{
-			this.$el.fadeOut(4000);	
+			$(this.el).parent().fadeOut(4000);	
 		}
 	},
 
 	storeDeletedTodo: function (todo) {
-		this.setAttr('deletedTodo', todo);
+		this.deletedTodo = todo;
 	},
 
 	restoreDeletedTodo: function () {
-		this.collection.add(this.getAttr('deletedTodo'));
-		this.setAttr('deletedTodo', undefined);
+		this.collection.add(this.deletedTodo);
+		this.deletedTodo = undefined;
 	}
 });

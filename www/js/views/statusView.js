@@ -2,7 +2,7 @@ App.Views.StatusView = Backbone.View.extend({
 	model: App.Models.StatusModel,
 
 	initialize: function () {
-		this.collection.on( 'add remove change:completed', this.refreshStatistics, this);
+		this.listenTo(this.collection, 'add remove change:completed', this.refreshStatistics, this);
 	},
 
 	getTemplate: function () {
@@ -10,12 +10,12 @@ App.Views.StatusView = Backbone.View.extend({
 	},
 
 	render: function () {
+		this.updateModelValues();
 		this.$el.html(this.getTemplate()(this.model.attributes));
 		return this;
 	},
 
 	refreshStatistics: function () {
-		this.updateModelValues();
 		this.render();
 	},
 

@@ -7,7 +7,7 @@ App.Views.TodoView = Backbone.View.extend({
 	},
 
 	initialize: function () {
-		this.model.on( "change:completed", this.render, this);
+		this.listenTo(this.model, "change:completed", this.render, this);
 	},
 
 	getTemplate: function () {

@@ -19,6 +19,13 @@
         <hr />
         <div class="status-area"></div>
     </script>
+
+     <script type="text/template" id="notification-template">
+        <fieldset>
+            <label id="notification-text"><%= title %>
+            <input type="button" class="undo-button" value="Undo">
+        </fieldset>
+    </script>
     
     <script type= "text/template" id= "newTodo-template">
             <fieldset>
@@ -41,21 +48,14 @@
     <script type="text/template" id="todosCollection-template">
         <div class = "todos">
         </div>
-    </script>
-
-    <script type="text/template" id="notification-template">
-        <fieldset>
-            <label id="notification-text"><%= title %>
-            <input type="button" class="undo-button" value="Undo">
-        </fieldset>
-    </script>
+    </script>  
 
     <script type="text/template" id="status-template">
         <label id="activeTodosNr-text"><% print( 'Remaining (' + remainingTodosNr +')' ) %></label>
-        <input type="button" class="all-button" value="All">
-        <input type="button" class="active-button" value="Active">
-        <input type="button" class="completed-button" value="Completed">
-        <label id="completedTodosNr-text"><%  print( completedTodosNr > 0 ? 'Completed (' +  completedTodosNr +')' : '' ) %></label>
+        <a href="#/all">All</a>
+        <a href="#/active">Active</a>
+        <a href="#/completed">Completed</a>
+        <label id="completedTodosNr-text"><%  print( completedTodosNr > 0 ? 'Clear Completed (' +  completedTodosNr +')' : '' ) %></label>
     </script>
 
 	<!--Includes-->
@@ -78,12 +78,12 @@
     <script type="text/javascript" src="js/views/pageView.js"></script>
     <script type="text/javascript" src="js/views/notificationView.js"></script>
     <script type="text/javascript" src="js/views/statusView.js"></script>
+    <script type="text/javascript" src="js/views/activeTodosCollectionView.js"></script>
+    <script type="text/javascript" src="js/views/completedTodosCollectionView.js"></script>
 
     <script type = "text/javascript">
     
     var todoRouter = new App.TodoRouter();
-    //var collection = new TodoCollection();
-    // App.todoService = new TodoService(collection);
     Backbone.history.start();
 
     </script>

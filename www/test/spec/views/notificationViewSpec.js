@@ -16,7 +16,7 @@ describe('App.Views.NotificationView', function () {
 		});
 		
 		it('can store the deleted todo', function () {
-			expect(notificationView.getAttr('deletedTodo').get('title')).toEqual('Test.');
+			expect(notificationView.deletedTodo.get('title')).toEqual('Test.');
 		});
 
 		it('can restore the deleted todo', function () {
