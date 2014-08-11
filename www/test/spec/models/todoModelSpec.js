@@ -5,8 +5,7 @@ describe("App.Models.TodoModel", function() {
 		todoModel = new App.Models.TodoModel({ title: "A text." });
 	});
 
-	it("has the correct content", function(){
-		expect(todoModel.get('title')).toBe("A text.");
+	it("has the correct default completed value", function(){
 		expect(todoModel.get('completed')).toBe(false);
 	});
 

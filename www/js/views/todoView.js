@@ -1,7 +1,7 @@
 App.Views.TodoView = Backbone.View.extend({
 	events: {
 		'click .delete-button': 'destroy',
-		'click .check-button': 'changeState',		
+		'click .check-button': 'changeStateHandler',		
 		'mouseenter .todoView': 'showDeleteButton',
 		'mouseleave .todoView': 'hideDeleteButton',
 	},
@@ -30,12 +30,16 @@ App.Views.TodoView = Backbone.View.extend({
 
 	destroy: function () {
 		this.model.destroy();
-		this.remove();	
+		this.remove();
+	},
+
+	changeStateHandler: function (){
+		this.changeState();
+		this.changeTextDecoration();
 	},
 
 	changeState: function () {
-		this.model.set('completed', !this.model.get('completed'));
-		this.changeTextDecoration();
+		this.model.set('completed', !this.model.get('completed'));	
 	},
 
 	changeTextDecoration: function () {

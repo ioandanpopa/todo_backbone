@@ -1,5 +1,5 @@
 App.TodoRouter = Backbone.Router.extend({
-    routes: {   	
+    routes: {
         '*actions': 'defaultAction'
     },
 

@@ -2,7 +2,7 @@ App.Collections.TodosCollection = Backbone.Collection.extend({
 	model: App.Models.TodoModel,
 
 	initialize: function () {
-		this.on( "change:completed", this.updateCompletedTodosNr, this);
+		this.on( 'add remove change:completed', this.updateTodosNr, this);
 		this._attributes = {};
 	},
 
@@ -14,12 +14,17 @@ App.Collections.TodosCollection = Backbone.Collection.extend({
 		this._attributes[attr_name] = value;
 	},
 
-	updateCompletedTodosNr: function () {
-		this._attributes['completedTodosNr'] = 0
+	updateTodosNr: function () {
+		this._attributes['completedTodosNr'] = 0;
+		this._attributes['remainingTodosNr'] = 0;
 
 		_.each(this.models, _.bind( function(todoModel) {
-			if(todoModel.get('completed'))
+			if(todoModel.get('completed')){
 				this._attributes['completedTodosNr']++;
+			}
+			else{
+				this._attributes['remainingTodosNr']++;
+			}
 		}, this));		
 	}
 });

@@ -3,44 +3,6 @@
 <head>
   <title>ToDo App's Test Runner</title>
 
-<!--Templates-->
-    <script type="text/template" id="page-template">
-        <h1>My todo list</h1>   
-        <hr />
-        <div class="notification-area"></div>
-        <div class="newTodo-area"></div>
-        <div class="todosCollection-area"></div>
-    </script>
-    
-    <script type= "text/template" id= "newTodo-template">
-        <fieldset>
-            <input type="text" id="title-input">
-            <input type="button" id="add-button" value="Add">
-        </fieldset>
-    </script>
-
-    <script type= "text/template" id= "todo-template">
-        <div class="todoView">
-            <fieldset>
-                <label id="title-label"><%= title %>
-                <input type="button" style="visibility:hidden" class="delete-button" value="x">
-            </fieldset>
-        </div>
-    </script>
-
-    <script type="text/template" id="todosCollection-template">
-        <div class = "todos">
-        </div>
-    </script>
-
-    <script type="text/template" id="notification-template">
-        <fieldset>
-            <label id="notification-text"><%= title %>
-            <input type="button" class="undo-button" value="Undo">
-        </fieldset>
-    </script>
-  
-
   <link rel="stylesheet" type="text/css" href="lib/jasmine-2.0.0/jasmine.css">
 
   <script type="text/javascript" src="lib/jasmine-2.0.0/jasmine.js"></script>
@@ -53,14 +15,19 @@
   <script type="text/javascript" src="http://backbonejs.org/backbone.js"></script>
 
   <script type="text/javascript" src="../js/AppModule.js"></script>
+
   <script type="text/javascript" src="../js/models/todoModel.js"></script>
   <script type="text/javascript" src="../js/models/notificationModel.js"></script>
+  <script type="text/javascript" src="../js/models/todoModel.js"></script>
+  <script type="text/javascript" src="../js/models/statusModel.js"></script>
+
   <script type="text/javascript" src="../js/collections/todosCollection.js"></script>
+  
   <script type="text/javascript" src="../js/views/todosCollectionView.js"></script>
   <script type="text/javascript" src="../js/views/todoView.js"></script>
   <script type="text/javascript" src="../js/views/newTodoView.js"></script>
   <script type="text/javascript" src="../js/views/notificationView.js"></script>
-  <script type="text/javascript" src="../js/models/todoModel.js"></script>
+  <script type="text/javascript" src="../js/views/statusView.js"></script>
 
 	<!-- test spec files go here -->
   <script type="text/javascript" src="spec/models/todoModelSpec.js"></script>
@@ -69,6 +36,7 @@
   <script type="text/javascript" src="spec/views/todoViewSpec.js"></script>
   <script type="text/javascript" src="spec/views/newTodoViewSpec.js"></script>
   <script type="text/javascript" src="spec/views/notificationViewSpec.js"></script>
+  <script type="text/javascript" src="spec/views/statusViewSpec.js"></script>
 
   <script type="text/javascript">
     (function() {

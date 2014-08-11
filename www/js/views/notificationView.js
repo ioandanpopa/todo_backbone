@@ -4,7 +4,7 @@ App.Views.NotificationView = Backbone.View.extend({
 	},
 
 	initialize: function () {
-		this.collection.on('remove', this.show, this);
+		this.collection.on('remove', this.showHandler, this);
 		this._attributes = {};
 	},
 
@@ -22,14 +22,22 @@ App.Views.NotificationView = Backbone.View.extend({
 
 	render: function () {
 		this.$el.html(this.getTemplate()(this.model.attributes));
-		this.$el.fadeOut(0);
 		return this;
 	},
 
-	show: function (todo) {
+	showHandler: function (todo) {
 		this.storeDeletedTodo(todo);
-		this.$el.fadeIn(1000);
-		this.$el.fadeOut(4000);
+		this.showView();
+	},
+
+	showView: function () {
+		if(this.$el.css('display') == 'none'){
+			this.$el.fadeIn(1000);
+			this.$el.fadeOut(4000);
+		}
+		else{
+			this.$el.fadeOut(4000);	
+		}
 	},
 
 	storeDeletedTodo: function (todo) {

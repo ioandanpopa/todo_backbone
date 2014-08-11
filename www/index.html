@@ -7,23 +7,25 @@
 <body>
 
      <!---HTML-->
-    <div class="container" style="width:35%"></div>
+    <div class="container" style="width:400px"></div>
 
     <!--Templates-->
     <script type="text/template" id="page-template">
         <h1>My todo list</h1>   
         <hr />
-        <div class="notification-area"></div>
+        <div class="notification-area" style="display:none"></div>
         <div class="newTodo-area"></div>
         <div class="todosCollection-area"></div>
+        <hr />
+        <div class="status-area"></div>
     </script>
     
     <script type= "text/template" id= "newTodo-template">
-        <fieldset>
-            <input type="button" id="checkAll-button" value="V">
-            <input type="text" id="title-input">
-            <input type="button" id="add-button" value="Add">
-        </fieldset>
+            <fieldset>
+                <input type="button" id="checkAll-button" value="V">
+                <input type="text" id="title-input">
+                <input type="button" id="add-button" value="Add">
+            </fieldset>
     </script>
 
     <script type= "text/template" id= "todo-template">
@@ -48,6 +50,14 @@
         </fieldset>
     </script>
 
+    <script type="text/template" id="status-template">
+        <label id="activeTodosNr-text"><% print( 'Remaining (' + remainingTodosNr +')' ) %></label>
+        <input type="button" class="all-button" value="All">
+        <input type="button" class="active-button" value="Active">
+        <input type="button" class="completed-button" value="Completed">
+        <label id="completedTodosNr-text"><%  print( completedTodosNr > 0 ? 'Completed (' +  completedTodosNr +')' : '' ) %></label>
+    </script>
+
 	<!--Includes-->
 	<script type="text/javascript" src="js/libs/jquery/jquery-min.js"></script>
 	<script type="text/javascript" src="http://underscorejs.org/underscore.js"></script>
@@ -58,6 +68,7 @@
 
 	<script type="text/javascript" src="js/models/todoModel.js"></script>
     <script type="text/javascript" src="js/models/notificationModel.js"></script>
+    <script type="text/javascript" src="js/models/StatusModel.js"></script>
 	
     <script type="text/javascript" src="js/collections/todosCollection.js"></script>
 
@@ -66,6 +77,7 @@
     <script type="text/javascript" src="js/views/newTodoView.js"></script>
     <script type="text/javascript" src="js/views/pageView.js"></script>
     <script type="text/javascript" src="js/views/notificationView.js"></script>
+    <script type="text/javascript" src="js/views/statusView.js"></script>
 
     <script type = "text/javascript">
     
