@@ -1,4 +1,8 @@
 App.Views.StatusView = Backbone.View.extend({
+	events: {
+		'click #completedTodosNr-text': 'clearCompletedTodos'
+	},
+
 	model: App.Models.StatusModel,
 
 	initialize: function () {
@@ -20,19 +24,17 @@ App.Views.StatusView = Backbone.View.extend({
 	},
 
 	updateModelValues: function () {		
-		var completedTodosNr = 0;
-		var remainingTodosNr = 0;
+		var defaultCounts = {
+			completedTodosNr: 0,
+			remainingTodosNr: 0
+		};
+		var counts = this.collection.countBy(function (todoModel) { 
+			return todoModel.get('completed') ? 'completedTodosNr' : 'remainingTodosNr';
+		});
+		this.model.set(_.defaults(counts, defaultCounts));
+	},
 
-		_.each(this.collection.models, _.bind( function(todoModel) {
-			if(todoModel.get('completed')){
-				completedTodosNr++;
-			}
-			else{
-				remainingTodosNr++;
-			}
-		}, this));
-
-		this.model.set('remainingTodosNr', remainingTodosNr);
-		this.model.set('completedTodosNr', completedTodosNr);
+	clearCompletedTodos: function () {
+		this.collection.removeCompleted();
 	}
 });

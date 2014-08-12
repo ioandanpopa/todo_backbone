@@ -11,5 +11,9 @@ App.Collections.TodosCollection = Backbone.Collection.extend({
 
 	getCompleted: function () {
 		return new App.Collections.TodosCollection(this.where({ completed: true }));
+	},
+
+	removeCompleted: function () {
+		this.remove(this.getCompleted().models);
 	}
 });

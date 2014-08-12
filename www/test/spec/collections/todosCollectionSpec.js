@@ -20,7 +20,7 @@ describe("App.Collections.TodosCollection", function () {
 		});
 	});
 
-	describe('filter', function () {
+	describe('operations', function () {
 		beforeEach( function () {
 			todosCollection.add(new App.Models.TodoModel({ title: 'Get something' }));
 			todosCollection.add(new App.Models.TodoModel({ title: 'Do something' , completed: true }));
@@ -37,6 +37,11 @@ describe("App.Collections.TodosCollection", function () {
 
 		it('can return all completed todos', function () {			
 			expect(todosCollection.getCompleted().length).toEqual(1);
+		});
+
+		it('can remove all completed todos', function () {
+			todosCollection.removeCompleted();
+			expect(todosCollection.length).toEqual(2);
 		});
 
 	});

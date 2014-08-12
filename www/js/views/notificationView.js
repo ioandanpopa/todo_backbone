@@ -33,6 +33,7 @@ App.Views.NotificationView = Backbone.View.extend({
 	},
 
 	storeDeletedTodo: function (todo) {
+		console.log(todo);
 		this.deletedTodo = todo;
 	},
 

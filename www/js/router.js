@@ -18,14 +18,14 @@ App.TodoRouter = Backbone.Router.extend({
     },
 
     all: function () {
-        this.getGlobalPageViewInstance().renderAllTodos();
+        this.getGlobalPageViewInstance().renderTodoCollectionView(App.Views.TodosCollectionView);
     },
 
     active: function () {
-    	this.getGlobalPageViewInstance().renderActiveTodos();	
+    	this.getGlobalPageViewInstance().renderTodoCollectionView(App.Views.ActiveTodosCollectionView);
     },
 
     completed: function () {
-        this.getGlobalPageViewInstance().renderCompletedTodos();
+        this.getGlobalPageViewInstance().renderTodoCollectionView(App.Views.CompletedTodosCollectionView);
     }    
 });

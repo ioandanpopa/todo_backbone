@@ -10,21 +10,9 @@ App.Views.PageView = Backbone.View.extend({
 		this.$('.notification-area').html(new App.Views.NotificationView({ model: notificationModel, collection: this.collection }).render().el);
 		this.$('.newTodo-area').html(new App.Views.NewTodoView({ collection: this.collection }).render().el);
 		this.$('.status-area').html(new App.Views.StatusView({ model: new App.Models.StatusModel(), collection: this.collection }).render().el);
-		this.renderAllTodos();
+		this.renderTodoCollectionView(App.Views.TodosCollectionView);
 
 		return this;
-	},
-
-	renderAllTodos: function () {
-		this.renderTodoCollectionView(App.Views.TodosCollectionView);
-	},
-
-	renderActiveTodos: function () {
-		this.renderTodoCollectionView(App.Views.ActiveTodosCollectionView);
-	},
-
-	renderCompletedTodos: function () {
-		this.renderTodoCollectionView(App.Views.CompletedTodosCollectionView);
 	},
 
 	renderTodoCollectionView: function (type) {

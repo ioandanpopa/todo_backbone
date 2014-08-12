@@ -1,6 +1,6 @@
 App.Views.TodosCollectionView = Backbone.View.extend({
-	initialize: function() {
-		this.listenTo(this.collection, 'add change:completed', this.render, this);
+	initialize: function() {		
+		this.listenTo(this.collection, 'add remove change:completed', this.render, this);
 	},
 
 	getTemplate: function () {
