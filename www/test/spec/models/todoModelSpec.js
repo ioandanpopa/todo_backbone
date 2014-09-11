@@ -12,9 +12,4 @@ describe("App.Models.TodoModel", function() {
 	it("validates correctly the title attribute when its a good value", function () {		
 		expect(todoModel.isValid()).toBe(true);
 	});
-
-	it("validates correctly the title attribute when its a bad value", function () {
-		todoModel.set('title', '');
-		expect(todoModel.isValid()).toBe(false);
-	});
 });

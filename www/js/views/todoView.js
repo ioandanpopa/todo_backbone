@@ -6,7 +6,8 @@ App.Views.TodoView = Backbone.View.extend({
 	},
 
 	bindings: {
-    	'.check-button': 'completed'
+    	'.check-button': 'completed',
+    	'.title-label': 'title'
 	},
 
 	getTemplate: function () {

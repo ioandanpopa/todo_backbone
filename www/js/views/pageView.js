@@ -4,11 +4,9 @@ App.Views.PageView = Backbone.View.extend({
 	},
 
 	render: function () {
-		this.$el.html(this.getTemplate()());
-
-		var notificationModel = new App.Models.NotificationModel();	
-		this.$('.notification-area').html(new App.Views.NotificationView({ model: notificationModel, collection: this.collection }).render().el);
-		this.$('.newTodo-area').html(new App.Views.NewTodoView({ collection: this.collection }).render().el);
+		this.$el.html(this.getTemplate()());		
+		this.$('.notification-area').html(new App.Views.NotificationView({ model: new App.Models.NotificationModel(), collection: this.collection }).render().el);
+		this.$('.newTodo-area').html(new App.Views.NewTodoHeaderView({ model: new App.Models.NewTodoHeaderModel(), collection: this.collection }).render().el);
 		this.$('.status-area').html(new App.Views.StatusView({ model: new App.Models.StatusModel(), collection: this.collection }).render().el);
 		this.renderTodoCollectionView(App.Views.TodosCollectionView);
 
