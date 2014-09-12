@@ -29,7 +29,7 @@
     
     <script type= "text/template" id= "newTodo-template">
             <fieldset>
-                <input type="button" class="checkAll-button" value="V">
+                <input type="button" id="checkAll-button" value="V">
                 <input type="textarea" class="title-input" placeholder='What to do?'>
                 <input type="button" class="add-button" value="Add">
             </fieldset>
@@ -51,11 +51,11 @@
     </script>  
 
     <script type="text/template" id="status-template">
-        <label id="activeTodosNr-text"><%= 'Remaining (' + remainingTodosNr +')' %></label>
+        <label id="remainingTodosNr-text"></label>
         <a href="#/all">All</a>
         <a href="#/active">Active</a>
         <a href="#/completed">Completed</a>
-        <label id="completedTodosNr-text" ><%= completedTodosNr > 0 ? 'Clear Completed (' +  completedTodosNr +')' : '' %></label>
+        <label id="completedTodosNr-text" ></label>
     </script>
 
 	<!--Includes-->

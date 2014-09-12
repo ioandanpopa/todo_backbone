@@ -1,7 +1,5 @@
 describe('App.Views.NotificationView', function () {
-	var todoModel;
-	var todosCollection;
-	var notificationView;
+	var todoModel, todosCollection, notificationView;
 
 	beforeEach( function () {
 		todoModel = new App.Models.TodoModel({ title: 'Test.' });

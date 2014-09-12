@@ -1,12 +1,29 @@
 App.Views.StatusView = Backbone.View.extend({
+	model: App.Models.StatusModel,
+
 	events: {
 		'click #completedTodosNr-text': 'clearCompletedTodos'
 	},
 
-	model: App.Models.StatusModel,
+	bindings: {
+		'#remainingTodosNr-text': {
+			observe: 'remainingTodosNr',
+			updateMethod: 'text',
+			onGet: function (value) {
+				return 'Remaining (' + value +')';
+			}
+		},
+		'#completedTodosNr-text': { 
+			observe: 'completedTodosNr',
+			updateMethod: 'text',
+			onGet: function (value) {
+				return value > 0 ? 'Clear Completed (' +  value +')' : '';
+			} 
+		}
+	},
 
 	initialize: function () {
-		this.listenTo(this.collection, 'add remove change:completed', this.refreshStatistics, this);
+		this.listenTo(this.collection, 'add remove change:completed', this.updateModelValues, this);
 	},
 
 	getTemplate: function () {
@@ -16,11 +33,9 @@ App.Views.StatusView = Backbone.View.extend({
 	render: function () {
 		this.updateModelValues();
 		this.$el.html(this.getTemplate()(this.model.attributes));
-		return this;
-	},
+		this.stickit();
 
-	refreshStatistics: function () {
-		this.render();
+		return this;
 	},
 
 	updateModelValues: function () {		

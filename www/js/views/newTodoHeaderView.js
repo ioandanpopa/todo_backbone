@@ -1,7 +1,7 @@
 App.Views.NewTodoHeaderView = Backbone.View.extend({	
 	events: {
 		'click .add-button': 'addTodo',
-		'click .checkAll-button': 'toggleAll'
+		'click #checkAll-button': 'toggleAll'
 	},
 
 	bindings: {

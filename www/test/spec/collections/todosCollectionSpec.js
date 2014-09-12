@@ -5,7 +5,7 @@ describe("App.Collections.TodosCollection", function () {
 		todosCollection = new App.Collections.TodosCollection();
 	});
 
-	describe('fetch', function () {
+	describe('fetch data from a json file', function () {
 		beforeEach( function (done) {
 			todosCollection.fetch({ url: 'spec/fixtures/todo_list.json' })
 				.done( function () {
@@ -13,7 +13,7 @@ describe("App.Collections.TodosCollection", function () {
 				});
 		});
 
-		it('has correct size', function (done) {
+		it('retrieves correct data', function (done) {
 			expect(todosCollection.length).toBe(2);
 
 			done();
@@ -43,6 +43,5 @@ describe("App.Collections.TodosCollection", function () {
 			todosCollection.removeCompleted();
 			expect(todosCollection.length).toEqual(2);
 		});
-
 	});
 });

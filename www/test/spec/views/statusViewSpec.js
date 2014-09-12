@@ -1,8 +1,5 @@
 describe('App.Views.StatusViewSpec', function () {
-	var statusView;
-	var statusModel;
-	var todosCollection;
-	var todoModel;
+	var statusView, statusModel, todosCollection, todoModel;
 	
 	beforeEach( function (){
 		todoModel = new App.Models.TodoModel({ title: 'Test', completed: true });

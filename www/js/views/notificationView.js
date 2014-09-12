@@ -5,7 +5,6 @@ App.Views.NotificationView = Backbone.View.extend({
 
 	initialize: function () {
 		this.listenTo(this.collection, 'remove', this.showHandler, this);
-		this._attributes = {};
 	},
 
 	getTemplate: function () {
